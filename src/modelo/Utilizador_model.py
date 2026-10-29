@@ -25,3 +25,19 @@ class Utilizador:
         if not isinstance(value, str) or not value.strip():
             raise ValueError("Nome do utilizador deve ser uma string não vazia.")
         self._nome = value
+
+    def resumo(self):
+        return f"ID: {self.id_utilizador}, Nome: {self.nome}"
+
+    @classmethod
+    def de_dicionario(cls, dicionario):
+        return cls(
+            id_utilizador=dicionario.get("id_utilizador"),
+            nome=dicionario.get("nome")
+        )
+
+    def para_dicionario(self):
+        return {
+            "id_utilizador": self.id_utilizador,
+            "nome": self.nome
+        }
