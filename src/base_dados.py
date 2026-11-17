@@ -8,6 +8,7 @@ def criar_tabela(caminho="medagenda.db"):
             ligacao.execute("""
                 CREATE TABLE IF NOT EXISTS pacientes (
                     id_paciente INTEGER PRIMARY KEY AUTOINCREMENT,
+                    nome TEXT NOT NULL,
                     idade INTEGER NOT NULL,
                     genero TEXT NOT NULL,
                     contacto TEXT NOT NULL
@@ -20,15 +21,16 @@ def adicionar_paciente(paciente, caminho="medagenda.db"):
     with closing(sqlite3.connect(caminho)) as ligacao:
         with ligacao:
             ligacao.execute(
-                "INSERT INTO pacientes (id_paciente, idade, genero, contacto) VALUES (?, ?, ?, ?)",
-                (dados["id_paciente"], dados["idade"], dados["genero"], dados["contacto"])
+                "INSERT INTO pacientes (id_paciente, nome, idade, genero, contacto) VALUES (?, ?, ?, ?, ?)",
+                (dados["id_paciente"], dados["nome"], dados["idade"], dados["genero"], dados["contacto"])
             )
  
  
 def listar_pacientes(caminho="medagenda.db"):
     with closing(sqlite3.connect(caminho)) as ligacao:
         linhas = ligacao.execute(
-            "SELECT nome, idade FROM pacientes"
+            "SELECT id_paciente, nome, idade, genero, contacto FROM pacientes"
         ).fetchall()
  
-    return [Paciente(nome, idade) for nome, idade in linhas]
+    return [Paciente(id_paciente, nome, idade, genero, contacto)
+            for id_paciente, nome, idade, genero, contacto in linhas]

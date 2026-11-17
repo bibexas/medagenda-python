@@ -66,6 +66,7 @@ class Paciente(Utilizador):
     def para_dicionario_paciente(self):
         return {
             "id_paciente": self.id_paciente,
+            "nome": self.nome,
             "idade": self.idade, 
             "genero": self.genero, 
             "contacto": self.contacto
