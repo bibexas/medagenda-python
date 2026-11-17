@@ -1,13 +1,31 @@
 
 class Consulta:
-    def __init__(self, id_consulta, id_paciente, nome_paciente, id_medico, data_consulta, hora, motivo):
+
+    def __init__(
+        self,
+        id_consulta,
+        paciente,
+        medico,
+        data_consulta,
+        hora,
+        motivo,
+        id_paciente,
+        id_medico,
+        nome_paciente,
+    ):
         self.id_consulta = id_consulta
+        id_paciente = paciente.id_paciente
+        nome_paciente = paciente.nome
+        self.paciente = paciente
+        id_medico = medico.id_medico
+        self.medico = medico
         self.id_paciente = id_paciente
-        self.nome_paciente = nome_paciente
         self.id_medico = id_medico
+        self.nome_paciente = nome_paciente
         self.data_consulta = data_consulta
         self.hora = hora
         self.motivo = motivo
+
 
     @property
     def id_consulta(self):
@@ -78,10 +96,6 @@ class Consulta:
         if not isinstance(value, str) or not value.strip():
             raise ValueError("Nome do paciente deve ser uma string não vazia.")
         self._nome_paciente = value
-
-    #2. Criar Consulta com referências a um Paciente e a um Medico e atributo de data/hora. Implementar um método resumo() que consulte o estado. 
-    def resumo(self):
-        return f"Consulta ID: {self.id_consulta}, Paciente ID: {self.id_paciente}, Nome do Paciente: {self.nome_paciente}, Data da Consulta: {self.data_consulta}, Hora: {self.hora}, Motivo: {self.motivo}"
 
     @classmethod
     def de_dicionario(cls, dicionario):

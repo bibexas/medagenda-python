@@ -1,0 +1,46 @@
+{
+    "paciente": [
+        {
+            "id_paciente": 1,
+            "nome": "Roger",
+            "idade": 22,
+            "genero": "M",
+            "contacto": "445511234"
+        },
+        {
+            "id_paciente": 4,
+            "nome": "João gomes",
+            "idade": 30,
+            "genero": "Masculino",
+            "contacto": "912345678"
+        }
+    ],
+    "medico": [
+        {
+            "id_medico": 1,
+            "nome": "Dr. Ferro",
+            "especialidade": "Medicina Geral",
+            "contacto": "99884423"
+        }
+    ],
+    "consulta": [
+        {
+            "id_consulta": 1,
+            "id_paciente": 1,
+            "nome_paciente": "Roger",
+            "id_medico": 1,
+            "data_consulta": "2026-10-02",
+            "hora": "15:05",
+            "motivo": "Medicina Geral"
+        },
+        {
+            "id_consulta": 2,
+            "id_paciente": 1,
+            "nome_paciente": "Roger",
+            "id_medico": 1,
+            "data_consulta": "2026-10-02",
+            "hora": "05:05",
+            "motivo": "Teste"
+        }
+    ]
+}
