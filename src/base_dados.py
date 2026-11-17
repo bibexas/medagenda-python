@@ -2,7 +2,7 @@ from contextlib import closing
 from src.modelo.Paciente_model import Paciente
 import sqlite3
 
-def criar_tabela(caminho="medagenda.db"):
+def criar_tabela(caminho="dados/medagenda.db"):
     with closing(sqlite3.connect(caminho)) as ligacao:
         with ligacao:
             ligacao.execute("""
@@ -15,18 +15,18 @@ def criar_tabela(caminho="medagenda.db"):
                 )
             """)
 
-def adicionar_paciente(paciente, caminho="medagenda.db"):
+def adicionar_paciente(paciente, caminho="dados/medagenda.db"):
     dados = paciente.para_dicionario_paciente()
  
     with closing(sqlite3.connect(caminho)) as ligacao:
         with ligacao:
             ligacao.execute(
-                "INSERT INTO pacientes (id_paciente, nome, idade, genero, contacto) VALUES (?, ?, ?, ?, ?)",
-                (dados["id_paciente"], dados["nome"], dados["idade"], dados["genero"], dados["contacto"])
+                "INSERT INTO pacientes (nome, idade, genero, contacto) VALUES (?, ?, ?, ?)",
+                (dados["nome"], dados["idade"], dados["genero"], dados["contacto"])
             )
  
  
-def listar_pacientes(caminho="medagenda.db"):
+def listar_pacientes(caminho="dados/medagenda.db"):
     with closing(sqlite3.connect(caminho)) as ligacao:
         linhas = ligacao.execute(
             "SELECT id_paciente, nome, idade, genero, contacto FROM pacientes"
