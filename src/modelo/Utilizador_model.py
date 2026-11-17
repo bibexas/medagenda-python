@@ -25,3 +25,10 @@ class Utilizador:
         if not isinstance(value, str) or not value.strip():
             raise ValueError("Nome do utilizador deve ser uma string não vazia.")
         self._nome = value
+
+    # Dicionário de serialização
+    def para_dicionario(self):
+        return {
+            "nome": self.nome,
+            "idade": self.idade
+        }

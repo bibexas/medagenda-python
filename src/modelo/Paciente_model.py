@@ -61,3 +61,12 @@ class Paciente(Utilizador):
 
     def resumo(self):
         return f"ID: {self.id_paciente}, Nome: {self.nome}, Idade: {self.idade}, Gênero: {self.genero}, Contacto: {self.contacto}"
+
+    # Dicionário de serialização
+    def para_dicionario_paciente(self):
+        return {
+            "id_paciente": self.id_paciente,
+            "idade": self.idade, 
+            "genero": self.genero, 
+            "contacto": self.contacto
+        }
