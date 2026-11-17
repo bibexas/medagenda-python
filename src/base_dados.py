@@ -21,8 +21,8 @@ def adicionar_paciente(paciente, caminho="medagenda.db"):
     with closing(sqlite3.connect(caminho)) as ligacao:
         with ligacao:
             ligacao.execute(
-                "INSERT INTO pacientes (id_paciente, nome, idade, genero, contacto) VALUES (?, ?, ?, ?, ?)",
-                (dados["id_paciente"], dados["nome"], dados["idade"], dados["genero"], dados["contacto"])
+                "INSERT INTO pacientes (nome, idade, genero, contacto) VALUES (?, ?, ?, ?)",
+                (dados["nome"], dados["idade"], dados["genero"], dados["contacto"])
             )
  
  
