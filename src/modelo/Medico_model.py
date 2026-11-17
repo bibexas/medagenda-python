@@ -39,3 +39,21 @@ class Medico(Utilizador):
 
     def resumo(self):
         return f"ID: {self.id_medico}, Nome: {self.nome}, Especialidade: {self.especialidade}, Contacto: {self.contacto}"
+
+
+    @classmethod
+    def de_dicionario(cls, dicionario):
+        return cls(
+            id_medico=dicionario.get("id_medico"),
+            nome=dicionario.get("nome"),
+            especialidade=dicionario.get("especialidade"),
+            contacto=dicionario.get("contacto")
+        )
+
+    def para_dicionario(self):
+        return {
+            "id_medico": self.id_medico,
+            "nome": self.nome,
+            "especialidade": self.especialidade,
+            "contacto": self.contacto
+        }

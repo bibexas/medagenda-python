@@ -67,7 +67,25 @@ class Paciente(Utilizador):
         return {
             "id_paciente": self.id_paciente,
             "nome": self.nome,
-            "idade": self.idade, 
-            "genero": self.genero, 
+            "idade": self.idade,
+            "genero": self.genero,
             "contacto": self.contacto
         }
+
+    def para_dicionario(self):
+        return {
+            "id_paciente": self.id_paciente,
+            "nome": self.nome,
+            "idade": self.idade,
+            "genero": self.genero,
+            "contacto": self.contacto
+        }
+
+    @classmethod
+    def de_dicionario(cls, dados):
+        id_paciente = dados.get("id_paciente", dados.get("_id_paciente"))
+        nome = dados.get("nome", dados.get("_nome"))
+        idade = dados.get("idade", dados.get("_idade"))
+        genero = dados.get("genero", dados.get("_genero"))
+        contacto = dados.get("contacto", dados.get("_contacto"))
+        return cls(id_paciente, nome, idade, genero, contacto)

@@ -26,9 +26,18 @@ class Utilizador:
             raise ValueError("Nome do utilizador deve ser uma string não vazia.")
         self._nome = value
 
-    # Dicionário de serialização
+    def resumo(self):
+        return f"ID: {self.id_utilizador}, Nome: {self.nome}"
+
+    @classmethod
+    def de_dicionario(cls, dicionario):
+        return cls(
+            id_utilizador=dicionario.get("id_utilizador"),
+            nome=dicionario.get("nome")
+        )
+
     def para_dicionario(self):
         return {
-            "nome": self.nome,
-            "idade": self.idade
+            "id_utilizador": self.id_utilizador,
+            "nome": self.nome
         }
