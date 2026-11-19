@@ -1,6 +1,7 @@
 
 from src.modelo.Utilizador_model import Utilizador
 
+
 class Paciente(Utilizador):
     def __init__(self, id_paciente, nome, idade, genero, contacto):
         self.id_paciente = id_paciente
@@ -36,7 +37,8 @@ class Paciente(Utilizador):
     @idade.setter
     def idade(self, value):
         if not isinstance(value, int) or value < 0:
-            raise ValueError("Idade do paciente deve ser um inteiro não negativo.")
+            raise ValueError(
+                "Idade do paciente deve ser um inteiro não negativo.")
         self._idade = value
 
     @property
@@ -46,7 +48,8 @@ class Paciente(Utilizador):
     @genero.setter
     def genero(self, value):
         if not isinstance(value, str) or not value.strip():
-            raise ValueError("Gênero do paciente deve ser uma string não vazia.")
+            raise ValueError(
+                "Gênero do paciente deve ser uma string não vazia.")
         self._genero = value
 
     @property
@@ -56,7 +59,8 @@ class Paciente(Utilizador):
     @contacto.setter
     def contacto(self, value):
         if not isinstance(value, str) or not value.strip():
-            raise ValueError("Contacto do paciente deve ser uma string não vazia.")
+            raise ValueError(
+                "Contacto do paciente deve ser uma string não vazia.")
         self._contacto = value
 
     def resumo(self):
