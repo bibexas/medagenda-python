@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+.env
+medagenda.db
+dados/medagenda.db
+**/medagenda.db
